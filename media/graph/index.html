@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="{{CSP}}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{STYLE_URI}}" />
+    {{BOOTSTRAP}}
+    <title>Notes Graph</title>
+  </head>
+  <body>
+    <header>
+      <div><strong>Graph</strong> — file–tag + tag–tag</div>
+      <div class="hint">
+        Click a <em>tag</em> node to toggle AND-filter · Click a
+        <em>file</em> node to open
+      </div>
+    </header>
+    <canvas id="c"></canvas>
+    <script nonce="{{NONCE}}" src="{{SCRIPT_URI}}"></script>
+  </body>
+</html>

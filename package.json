@@ -1,0 +1,343 @@
+{
+  "name": "knowledge-manager-extension",
+  "displayName": "Knowledge Manager",
+  "publisher": "ronjalogia",
+  "description": "Allows user to take notes, add tags to them and create projects by combining km.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "assets/transparent-logo.png",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:km.openGraph",
+    "onCommand:km.openMindmap",
+    "onCommand:km.openMindmapQuickPick",
+    "onCommand:km.newMindmap",
+    "onCommand:km.toggleTag",
+    "onCommand:km.clearFilter",
+    "onCommand:km.newFromTemplate",
+    "onCommand:km.saveActiveAsTemplate",
+    "onCommand:km.newEmptyTemplate",
+    "onCommand:km.rename",
+    "onCommand:km.deleteTemplate",
+    "onCommand:km.addFile",
+    "onCommand:km.addFolder",
+    "onCommand:km.refreshFiles",
+    "onCommand:km.deleteFile",
+    "onCommand:km.deleteFolder",
+    "onCommand:km.refreshMindmaps",
+    "onCommand:km.deleteMindmap",
+    "onCommand:km.refreshTemplates"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "km.openGraph",
+        "title": "Knowledge Manager: Open Graph",
+        "icon": "$(graph-scatter)"
+      },
+      {
+        "command": "km.openMindmap",
+        "title": "Knowledge Manager: Open Mindmap",
+        "icon": "$(file-media)"
+      },
+      {
+        "command": "km.openMindmapQuickPick",
+        "title": "Knowledge Manager: Open Mindmap…",
+        "icon": "$(file-media)"
+      },
+      {
+        "command": "km.newMindmap",
+        "title": "Knowledge Manager: New Mindmap",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "km.toggleTag",
+        "title": "Knowledge Manager: Toggle Tag",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "km.clearFilter",
+        "title": "Knowledge Manager: Clear Tag Filter",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "km.newFromTemplate",
+        "title": "Knowledge Manager: Create File from Template",
+        "icon": "$(files)"
+      },
+      {
+        "command": "km.saveActiveAsTemplate",
+        "title": "Knowledge Manager: Save Active File as Template",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "km.newEmptyTemplate",
+        "title": "Knowledge Manager: New Empty Template",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "km.rename",
+        "title": "Knowledge Manager: Rename Template",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "km.deleteTemplate",
+        "title": "Knowledge Manager: Delete Template",
+        "icon": "$(close)"
+      },
+      {
+        "command": "km.refreshFiles",
+        "title": "Knowledge Manager: Refresh Files",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "km.addFile",
+        "title": "Knowledge Manager: Add file",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "km.addFolder",
+        "title": "Knowledge Manager: Add folder",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "km.deleteFile",
+        "title": "Knowledge Manager: Delete file",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "km.deleteFolder",
+        "title": "Knowledge Manager: Delete folder",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "km.deleteTemplate",
+        "title": "Knowledge Manager: Delete Template",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "km.refreshTemplates",
+        "title": "Knowledge Manager: Refresh Templates",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "km.refreshMindmaps",
+        "title": "Knowledge Manager: Refresh Mindmaps",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "km.deleteMindmap",
+        "title": "Knowledge Manager: Delete Mindmap",
+        "icon": "$(trash)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "notes",
+          "title": "Knowledge Manager",
+          "icon": "assets/transparent-logo.png"
+        }
+      ]
+    },
+    "views": {
+      "notes": [
+        {
+          "id": "km.tagsView",
+          "name": "Tags",
+          "icon": "$(tag)"
+        },
+        {
+          "id": "km.filesView",
+          "name": "Files (.md and folders with .md files)",
+          "icon": "$(file-submodule)"
+        },
+        {
+          "id": "km.mindmapsView",
+          "name": "Mindmaps (.mindmap.json)",
+          "icon": "$(file-media)"
+        },
+        {
+          "id": "km.templatesView",
+          "name": "Templates (.md)",
+          "icon": "$(files)"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Knowledge Manager Settings",
+      "properties": {
+        "km.defaultNotesDir": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Empty = whole workspace. Otherwise path, e.g. 'notes/'."
+        },
+        "km.graph.maxNodes": {
+          "type": "number",
+          "default": 500
+        },
+        "km.mindmap.autosave": {
+          "type": "boolean",
+          "default": false
+        },
+        "km.twoPane": {
+          "type": "boolean",
+          "default": true
+        },
+        "km.km.workspaceFolder": {
+          "type": "string",
+          "default": "templates",
+          "description": "Relative path for workspace templates"
+        }
+      }
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "km.clearFilter",
+          "when": "view == km.tagsView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "km.newMindmap",
+          "when": "view == km.mindmapsView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "km.openMindmapQuickPick",
+          "when": "view == km.mindmapsView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "km.newEmptyTemplate",
+          "when": "view == km.templatesView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "km.saveActiveAsTemplate",
+          "when": "view == km.templatesView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "km.openGraph",
+          "when": "view == km.tagsView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "km.addFile",
+          "when": "view == km.filesView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "km.addFolder",
+          "when": "view == km.filesView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "km.refreshFiles",
+          "when": "view == km.filesView",
+          "group": "navigation@3"
+        },
+        {
+          "command": "km.refreshMindmaps",
+          "when": "view == km.mindmapsView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "km.refreshTemplates",
+          "when": "view == km.templatesView",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "km.newFromTemplate",
+          "when": "view == km.templatesView && viewItem == template",
+          "group": "inline"
+        },
+        {
+          "command": "km.rename",
+          "when": "view == km.templatesView && viewItem == template",
+          "group": "2_mod"
+        },
+        {
+          "command": "km.deleteTemplate",
+          "when": "view == km.templatesView && viewItem == template",
+          "group": "3_mod"
+        },
+        {
+          "command": "km.deleteFile",
+          "when": "view == km.filesView && viewItem == file",
+          "group": "inline"
+        },
+        {
+          "command": "km.deleteFolder",
+          "when": "view == km.filesView && viewItem == dir",
+          "group": "inline"
+        },
+        {
+          "command": "km.deleteMindmap",
+          "when": "view == km.mindmapsView && viewItem == mindmapItem",
+          "group": "inline"
+        },
+        {
+          "command": "km.deleteTemplate",
+          "when": "view == km.templatesView && viewItem == template",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "keywords": [
+    "notes",
+    "mindmap",
+    "tags",
+    "markdown",
+    "knowledge"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ronjalogia/knowledge-manager-extension"
+  },
+  "license": "MIT",
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && node ./esbuild.mjs",
+    "package": "npm run check-types && node ./esbuild.mjs --production",
+    "build": "node ./esbuild.mjs",
+    "watch": "node ./esbuild.mjs --watch",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint ./src --ext .ts,.tsx --max-warnings=0",
+    "compile-tests": "tsc -p .",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "vscode:test": "npm run compile-tests && node ./out/test/runTest.js",
+    "test": "npm run compile-tests && node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.21",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "@vscode/codicons": "^0.0.41",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.21.5",
+    "eslint": "^9.37.0",
+    "glob": "^10.4.5",
+    "globals": "^16.4.0",
+    "mocha": "^11.7.4",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "yaml": "^2.4.2"
+  }
+}

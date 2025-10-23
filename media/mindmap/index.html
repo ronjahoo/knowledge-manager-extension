@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="{{CSP}}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{STYLE_URI}}" />
+    {{BOOTSTRAP}}
+    <title>Mindmap</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <strong>Mindmap</strong>
+      <span class="hint" id="relpath"></span>
+      <button id="add">Add block</button>
+      <button id="connect">Connect</button>
+      <button id="save">Save (Ctrl+S)</button>
+      <span class="hint" id="modeHint"></span>
+    </header>
+
+    <div id="wrap">
+      <div id="stage">
+        <svg id="edges"></svg>
+        <div id="canvas"></div>
+      </div>
+    </div>
+
+    <script nonce="{{NONCE}}" src="{{SCRIPT_URI}}"></script>
+  </body>
+</html>
