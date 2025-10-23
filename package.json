@@ -2,7 +2,7 @@
   "name": "knowledge-manager-extension",
   "displayName": "Knowledge Manager",
   "publisher": "ronjalogia",
-  "description": "Allows user to take notes, add tags to them and create projects by combining km.",
+  "description": "Allows user to take notes, add tags to them and create projects by combining notes.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.90.0"
