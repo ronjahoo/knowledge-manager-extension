@@ -1,10 +1,10 @@
 node_modules/
-
 dist/
 out/
+*.tsbuildinfo
+.eslintcache
 
 .vscode-test/
-
 *.vsix
 
 logs
@@ -17,12 +17,8 @@ pnpm-debug.log*
 yarn.lock
 pnpm-lock.yaml
 
-*.tsbuildinfo
-.eslintcache
-
 .env
 .env.*.local
-
 .DS_Store
 Thumbs.db
 
@@ -31,3 +27,4 @@ Thumbs.db
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.idea/

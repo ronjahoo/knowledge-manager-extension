@@ -3,12 +3,20 @@
 **/.vscode-test.*
 **/tsconfig.json
 **/eslint.config.mjs
+esbuild.js
+esbuild.mjs
 
 src/**
 **/*.ts
 **/*.map
+test/**
+**/*.test.*
+**/*.spec.*
+**/__tests__/**
 
-esbuild.js
+.git/**
+.gitignore
+.github/**
 
 node_modules/**
 .yarnrc
@@ -16,22 +24,12 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-.git/**
-.gitignore
-.github/**
-
-**/*.test.*
-**/*.spec.*
-**/__tests__/**
-
 .DS_Store
 Thumbs.db
 
-!dist/**
-
-!images/**
-!media/**
-
+!dist/**          # bundle + runtime
+!media/**         # ikonit ym.
+!images/**        # jos käytät erillisiä kuvia
 !README.md
 !CHANGELOG.md
 !LICENSE
