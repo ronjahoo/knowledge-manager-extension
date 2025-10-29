@@ -44,7 +44,7 @@ This extension currently contributes the following settings:
 ### Reporting Issues
 
 If you encounter bugs, UI problems, or unexpected behavior, please report them by opening a new issue on GitHub:  
-👉 [https://github.com/ronjahoo/knowledge-manager-extension/issues](https://github.com/ronjagoo/knowledge-manager-extension/issues)
+👉 [https://github.com/ronjahoo/knowledge-manager-extension/issues](https://github.com/ronjahoo/knowledge-manager-extension/issues)
 
 When reporting:
 
