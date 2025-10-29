@@ -3,7 +3,7 @@
   "displayName": "Knowledge Manager",
   "publisher": "ronjalogia",
   "description": "Allows user to take notes, add tags to them and create projects by combining notes.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.90.0"
   },
