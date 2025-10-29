@@ -6,9 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.0.1] - 2025-10-23
+## [0.0.3] - 2025-10-29
 
-### Added
+- Updated a few links that had wrong URLs
+
+## [0.0.2] - 2025-10-23
+
+- Release tag for marketplace release
+
+## [0.0.1] - 2025-10-23
 
 - Initial MVP release of the extension.  
 - Markdown note management with tags and frontmatter.  
